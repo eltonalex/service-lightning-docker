@@ -1,0 +1,29 @@
+services:
+
+  lightning-glm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: service-lightning-docker
+    restart: unless-stopped
+    ports:
+      - "${PORT:-5000}:5000"
+    volumes:
+      # Pasta local com os arquivos fig_diag_merge_*.json
+      - ./data:/data:ro
+    environment:
+      PORT: 5000
+      HOST: 0.0.0.0
+      DATA_DIR: /data
+      NODE_ENV: production
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5000/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

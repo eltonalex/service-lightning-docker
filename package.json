@@ -1,0 +1,22 @@
+{
+  "name": "service-lightning-docker",
+  "version": "1.0.0",
+  "description": "Serviço REST para clusters de raios GLM/DECEA — SOS Chuva",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
