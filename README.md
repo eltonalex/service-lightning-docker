@@ -1,4 +1,4 @@
-# ⚡ lightning-glm-service
+# ⚡ service-lightning-docker
 
 Serviço REST em Node.js para análise e visualização de **clusters de raios GLM/DECEA**,
 desenvolvido como componente de backend do projeto **SOS Chuva**.
