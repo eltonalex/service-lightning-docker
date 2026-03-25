@@ -8,20 +8,20 @@ services:
     restart: unless-stopped
     ports:
       - "${PORT:-5000}:5000"
-    volumes:
-      # Pasta local com os arquivos fig_diag_merge_*.json
-      - ./data:/data:ro
     environment:
       PORT: 5000
       HOST: 0.0.0.0
-      DATA_DIR: /data
       NODE_ENV: production
+      # Opcional: sobrescreve a URL do diretório mensal (calculada automaticamente se não definida)
+      # RAIOS_BASE_URL: https://ftp.cptec.inpe.br/nowcasting/RAIOS/2026/03/
+      # SNAPSHOT_WINDOW: 12         # arquivos em cache (1 = 5 min)
+      # REFRESH_INTERVAL_MS: 300000 # intervalo de atualização em ms
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:5000/health"]
       interval: 20s
       timeout: 5s
       retries: 3
-      start_period: 10s
+      start_period: 15s
     logging:
       driver: json-file
       options:
